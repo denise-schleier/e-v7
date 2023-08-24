@@ -2,11 +2,16 @@
   "name": "e-v7",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "ev7_runtime.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "make ev7.js",
+    "start": "make ev7.js && tsx ev7.js",
+    "test": "make ev7.js && tsx ev7.js -e \"ev7().console.log('xxx')\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "tsx": "^3.12.7"
+  }
 }

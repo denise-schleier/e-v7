@@ -26,7 +26,7 @@ v7.js: v7.c v7.h Makefile
 ev7: ev7.c v7.o v7.h Makefile
 	$(CC) ev7.c v7.o -o $@ $(CFLAGS) -lm
 
-ev7.js: ev7.c v7.c v7.h Makefile
+ev7.js: ev7.c v7.c v7.h Makefile ev7_runtime.js
 	emcc ev7.c v7.c -s WASM=1 -o $@ $(CFLAGS) -lm -pthread --preload-file ev7_runtime.js
 
 v7.o: v7.c v7.h Makefile
