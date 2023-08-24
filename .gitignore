@@ -1,17 +1,18 @@
 node_modules
 
-ev7_runtime.js
+js/*.js
+js/*.js.map
 
-ev7.data
-ev7.exe
-ev7.o
-ev7.js
-ev7.wasm
-ev7.worker.js
+src/ev7.data
+src/ev7.exe
+src/ev7.o
+src/ev7.js
+src/ev7.wasm
+src/ev7.worker.js
 
-v7.data
-v7.exe
-v7.o
-v7.js
-v7.wasm
-v7.worker.js
+src/v7.data
+src/v7.exe
+src/v7.o
+src/v7.js
+src/v7.wasm
+src/v7.worker.js

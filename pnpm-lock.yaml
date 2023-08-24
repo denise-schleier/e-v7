@@ -1,12 +1,18 @@
 lockfileVersion: 5.4
 
 specifiers:
-  tsc: ^2.0.4
+  '@types/node': ^20.5.4
+  '@types/systemjs': ^6.13.2
+  systemjs: ^6.14.2
   tsx: ^3.12.7
+  typescript: ^5.1.6
 
 dependencies:
-  tsc: 2.0.4
+  '@types/node': 20.5.4
+  '@types/systemjs': 6.13.2
+  systemjs: 6.14.2
   tsx: 3.12.7
+  typescript: 5.1.6
 
 packages:
 
@@ -229,6 +235,14 @@ packages:
     dev: false
     optional: true
 
+  /@types/node/20.5.4:
+    resolution: {integrity: sha512-Y9vbIAoM31djQZrPYjpTLo0XlaSwOIsrlfE3LpulZeRblttsLQRFRlBAppW0LOxyT3ALj2M5vU1ucQQayQH3jA==}
+    dev: false
+
+  /@types/systemjs/6.13.2:
+    resolution: {integrity: sha512-PhwVbo59iXHlcL80tZpu1gw515UDyz6XHuK9SixdoCP274xZxlEROWFU6ZCXkOiiYMBY9MhPy6wNzCBRBYk29w==}
+    dev: false
+
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: false
@@ -293,9 +307,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /tsc/2.0.4:
-    resolution: {integrity: sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==}
-    hasBin: true
+  /systemjs/6.14.2:
+    resolution: {integrity: sha512-1TlOwvKWdXxAY9vba+huLu99zrQURDWA8pUTYsRIYDZYQbGyK+pyEP4h4dlySsqo7ozyJBmYD20F+iUHhAltEg==}
     dev: false
 
   /tsx/3.12.7:
@@ -307,4 +320,10 @@ packages:
       '@esbuild-kit/esm-loader': 2.5.5
     optionalDependencies:
       fsevents: 2.3.3
+    dev: false
+
+  /typescript/5.1.6:
+    resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
     dev: false

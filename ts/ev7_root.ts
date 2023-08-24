@@ -1,10 +1,15 @@
-class ev7_root {
-    private args: any[]
+
+export class ev7_root {
+    private argv: string[]
     private v: any[]
 
-    constructor(...args) {
-        this.args = args
+    constructor(argv) {
+        this.argv = argv
         this.v = []
+    }
+
+    load(name: string) {
+        return require(name)
     }
 
     push(v: any) {
@@ -20,9 +25,4 @@ class ev7_root {
     
         return ret
     }
-}
-
-
-function ev7(...args) {
-    return new ev7_root(args)
 }

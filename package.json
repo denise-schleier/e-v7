@@ -2,17 +2,20 @@
   "name": "e-v7",
   "version": "1.0.0",
   "description": "",
-  "main": "ev7_runtime.js",
+  "type": "module",
+  "main": "js/ev7-cli.js",
   "scripts": {
-    "build": "tsc ev7_runtime.tsx && make ev7.js",
-    "start": "tsx ev7.js -e \"ev7().push(7)\"",
-    "test": "tsx ev7.js -e \"ev7().push(7).dump()\""
+    "build": "tsc",
+    "start": "tsx ts/ev7-cli.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tsc": "^2.0.4",
-    "tsx": "^3.12.7"
+    "@types/node": "^20.5.4",
+    "@types/systemjs": "^6.13.2",
+    "systemjs": "^6.14.2",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
   }
 }
