@@ -1,9 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
+  tsc: ^2.0.4
   tsx: ^3.12.7
 
 dependencies:
+  tsc: 2.0.4
   tsx: 3.12.7
 
 packages:
@@ -289,6 +291,11 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /tsc/2.0.4:
+    resolution: {integrity: sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==}
+    hasBin: true
     dev: false
 
   /tsx/3.12.7:

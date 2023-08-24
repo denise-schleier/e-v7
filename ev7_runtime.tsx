@@ -1,7 +1,9 @@
 class ev7_root {
+    private args: any[]
     private v: any[]
 
     constructor(...args) {
+        this.args = args
         this.v = []
     }
 

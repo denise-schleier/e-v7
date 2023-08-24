@@ -1,5 +1,7 @@
 node_modules
 
+ev7_runtime.js
+
 ev7.data
 ev7.exe
 ev7.o

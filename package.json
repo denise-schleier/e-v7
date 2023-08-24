@@ -4,7 +4,7 @@
   "description": "",
   "main": "ev7_runtime.js",
   "scripts": {
-    "build": "make ev7.js",
+    "build": "tsc ev7_runtime.tsx && make ev7.js",
     "start": "tsx ev7.js -e \"ev7().push(7)\"",
     "test": "tsx ev7.js -e \"ev7().push(7).dump()\""
   },
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "tsc": "^2.0.4",
     "tsx": "^3.12.7"
   }
 }
