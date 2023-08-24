@@ -5,8 +5,8 @@
   "main": "ev7_runtime.js",
   "scripts": {
     "build": "make ev7.js",
-    "start": "make ev7.js && tsx ev7.js",
-    "test": "make ev7.js && tsx ev7.js -e \"ev7().console.log('xxx')\""
+    "start": "tsx ev7.js",
+    "test": "tsx ev7.js -e \"ev7().push(7)\""
   },
   "keywords": [],
   "author": "",

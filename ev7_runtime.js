@@ -1,24 +1,31 @@
+var ev7_root = {
+    _init: init,
 
-var console = {
-    log(a, b, c, d, e, f) {
-        print(a, b, c, d, e, f)
-    }
+    push: push,
+    dump: dump
+};
+
+function init() {
+    this.v = []
 }
 
 
+function push(v) {
+    this.v.push(v)
 
-var fs = {
-    readFileSync(filename) {
-        return 'duda'
-    }
+    return this
+}
+
+function dump() {
+    this.v.forEach(function (e, index) {print(index, ':', e)})
+    this.v = []
+
+    return this
 }
 
 
-var exports = {
-    console: console,
-    fs: fs
-}
+ev7_root._init()
 
 function ev7() {
-    return exports;
+    return ev7_root;
 }

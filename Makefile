@@ -1,12 +1,13 @@
 WARNS = -W -Wall -pedantic -Wno-comment -Wno-variadic-macros -Wno-unused-function
 V7_FLAGS = -DCS_ENABLE_UTF8
+CFLAGS_EXTRA = -Wno-pedantic -Wno-implicit-fallthrough -Wno-unused-parameter
 CFLAGS_PLATFORM = -DCS_PLATFORM=CS_P_UNIX
 CFLAGS = $(WARNS) -g -O3 -lm $(V7_FLAGS) $(CFLAGS_PLATFORM) $(CFLAGS_EXTRA)
 TEST_CFLAGS = $(CFLAGS) -DV7_EXPOSE_PRIVATE -DV7_UNIT_TEST -DV7_FILENAMES_SUPPRESS_CFUNC_ADDR
 
 .PHONY: examples test
 
-all: v7 examples test
+all: ev7 #v7 examples test
 
 examples:
 	@$(MAKE) -C examples

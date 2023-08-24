@@ -3,30 +3,41 @@
 
 #include "v7.h"
 
+struct mg_str
+{
+    const char *p; /* Memory chunk pointer */
+    size_t len;    /* Memory chunk length */
+};
+
+struct mg_str mg_mk_str(const char *s) { return (struct mg_str){NULL, 0}; }
+struct mg_str mg_mk_str_n(const char *s, size_t len) { return (struct mg_str){NULL, 0}; }
+
+const char *mg_strchr(const struct mg_str s, int c) { return (char *)0; }
+
+long timezone;
+
 typedef uint64_t val_t;
 
 static void show_usage(char *argv[])
 {
-    fprintf(stderr, "V7 version %s (c) Cesanta Software, built on %s\n",
+    fprintf(stderr, "eV7 version %s (c) Cesanta Software, built on %s\n",
             V7_VERSION, __DATE__);
     fprintf(stderr, "Usage: %s [OPTIONS] ...\n", argv[0]);
     fprintf(stderr, "%s\n", "OPTIONS:");
     fprintf(stderr, "%s\n", "  -e <expr>            execute expression");
-    fprintf(stderr, "%s\n", "  -mm                  dump memory stats");
     fprintf(stderr, "%s\n", "  -vo <n>              object arena size");
     fprintf(stderr, "%s\n", "  -vf <n>              function arena size");
     fprintf(stderr, "%s\n", "  -vp <n>              property arena size");
     exit(EXIT_FAILURE);
 }
 
-int v7_main(int argc, char *argv[], void (*pre_freeze_init)(struct v7 *),
-            void (*pre_init)(struct v7 *), void (*post_init)(struct v7 *))
+int main(int argc, char *argv[])
 {
     int exit_rcode = EXIT_SUCCESS;
     struct v7 *v7;
     struct v7_create_opts opts;
     int as_json = 0;
-    int i, j, dump_stats = 0;
+    int i, j;
     val_t res;
     int nexprs = 0;
     const char *exprs[16];
@@ -69,36 +80,17 @@ int v7_main(int argc, char *argv[], void (*pre_freeze_init)(struct v7 *),
     v7 = v7_create_opt(opts);
     res = V7_UNDEFINED;
 
-    if (pre_freeze_init != NULL)
+    /* Execute runtime file (load) */
+    if (v7_exec_file(v7, "ev7_runtime.js", &res) != V7_OK)
     {
-        pre_freeze_init(v7);
-    }
-
-    if (pre_init != NULL)
-    {
-        pre_init(v7);
-    }
-
-    (void)dump_stats;
-
-    /* Execute files */
-    //    for (; i < argc; i++)
-    {
-        if (v7_exec_file(v7, "ev7_runtime.js", &res) != V7_OK)
-        //if (v7_exec_buf(v7, ev7_source, strlen(ev7_source), &res) != V7_OK)
-        {
-            v7_print_error(stderr, v7, argv[i], res);
-            res = V7_UNDEFINED;
-        }
+        v7_print_error(stderr, v7, argv[i], res);
+        res = V7_UNDEFINED;
     }
 
     /* Execute inline expressions */
     for (j = 0; j < nexprs; j++)
     {
-        enum v7_err (*exec)(struct v7 *, const char *, v7_val_t *);
-        exec = v7_exec;
-
-        if (exec(v7, exprs[j], &res) != V7_OK)
+        if (v7_exec(v7, exprs[j], &res) != V7_OK)
         {
             v7_print_error(stderr, v7, exprs[j], res);
             exit_rcode = EXIT_FAILURE;
@@ -117,18 +109,6 @@ int v7_main(int argc, char *argv[], void (*pre_freeze_init)(struct v7 *),
         }
     }
 
-    if (post_init != NULL)
-    {
-        post_init(v7);
-    }
-
-    (void)dump_stats;
-
     v7_destroy(v7);
     return exit_rcode;
-}
-
-int main(int argc, char *argv[])
-{
-    return v7_main(argc, argv, NULL, NULL, NULL);
 }
